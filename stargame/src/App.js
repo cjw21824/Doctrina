@@ -13,40 +13,71 @@ class App extends Component {
     );
   }
 }
- const Numbers = (props) => {
-   return (
+
+const Numbers = (props) => {
+  
+  const numberClassName = (number) => {
+    if (props.selectedNumbers.indexOf(number) >= 0) {
+      return 'selected';
+    }
+  } 
+  
+  return (
     <div className="card text-center">
       <div>
-        {Numbers.list.map((number,i) => <span key={i}>{number}</span>)}
+        {Numbers.list.map((number,i) =>
+           <span key={i} className={numberClassName(number)} onClick={()=> props.selectNumber(number)} >{number}</span>)}
       </div>
     </div>
    );
  }
+
  Numbers.list = lodash.range(1,10);
 
 class Game extends Component {
+  state= {
+    selectedNumbers: [],
+    numberOfStars: 1+ Math.floor(Math.random()*9),
+  };
+  
+  selectNumber = (clickedNumber) => {
+    if(!this.state.selectedNumbers.includes(clickedNumber)){
+      this.setState(prevState => ({
+        selectedNumbers: prevState.selectedNumbers.concat(clickedNumber)
+      }))
+    }
+  }
+
+  undoSelectedNumber= (clickedNumber) => {
+    this.setState(prevState => ({
+      selectedNumbers: prevState.selectedNumbers.filter(number => number !== clickedNumber)
+    }))
+  }
+  
   render() {
+    const { selectedNumbers, numberOfStars} = this.state;
     return (
       <div className='container'>
         <h1> Star Game </h1> 
         <hr />
         <div className = 'row'>
-          <Stars />
-          <Button />
-          <Answer />
+          <Stars numberOfStars={numberOfStars} />
+          <Button selectedNumbers={selectedNumbers} />
+          <Answer selectedNumbers={selectedNumbers}
+                  undoSelectedNumber={this.undoSelectedNumber} />
         </div>
         <br />
-        <Numbers />
+        <Numbers selectedNumbers={selectedNumbers}
+        selectNumber= {this.selectNumber}/>
       </div>
     );
   }
 }
 
 const Stars = (props) => {
-  const numberOfStars = 1+ Math.floor(Math.random()*9);
   return(
     <div className='col-5'>
-      {lodash.range(numberOfStars).map(i => <i key={i} className='fa fa-star'></i>)}
+      {lodash.range(props.numberOfStars).map(i => <i key={i} className='fa fa-star'></i>)}
     </div>
   );
 }
@@ -54,7 +85,7 @@ const Stars = (props) => {
 const Button = (props) => {
   return(
     <div className='col-2'>
-     <button>=</button> 
+     <button className='btn' disabled={props.selectedNumbers.length===0}>=</button> 
     </div>
   );
 }
@@ -62,8 +93,7 @@ const Button = (props) => {
 const Answer = (props) => {
   return(
     <div className='col-5'>
-      <span>5</span>
-      <span>6</span>
+      {props.selectedNumbers.map((number,i) => <span key={i} onClick={() => props.undoSelectedNumber(number)}>{number}</span>)}
     </div>
   );
 }
