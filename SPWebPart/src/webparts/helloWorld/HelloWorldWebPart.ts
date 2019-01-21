@@ -5,32 +5,34 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
-
+import {SPComponentLoader} from '@microsoft/sp-loader';
 import styles from './HelloWorldWebPart.module.scss';
 import * as strings from 'HelloWorldWebPartStrings';
+import MyAccordianTemplate from './MyAccordianTemplate';
+import * as jQuery from 'jquery';
+import 'jqueryui';
 
 export interface IHelloWorldWebPartProps {
   description: string;
 }
 
 export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorldWebPartProps> {
+  public constructor() {
+    super();
+    SPComponentLoader.loadCss('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
+  }
 
   public render(): void {
-    this.domElement.innerHTML = `
-      <div class="${ styles.helloWorld }">
-        <div class="${ styles.container }">
-          <div class="${ styles.row }">
-            <div class="${ styles.column }">
-              <span class="${ styles.title }">Welcome to SharePoint!</span>
-              <p class="${ styles.subTitle }">Customize SharePoint experiences using Web Parts.</p>
-              <p class="${ styles.description }">${escape(this.properties.description)}</p>
-              <a href="https://aka.ms/spfx" class="${ styles.button }">
-                <span class="${ styles.label }">Learn more</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>`;
+    this.domElement.innerHTML = MyAccordianTemplate.templateHtml;
+    const accordionOptions: JQueryUI.AccordionOptions = {
+      animate: true,
+      collapsible: true,
+      icons: {
+        header: 'ui-icon-circle-arrow-e',
+        activeHeader: 'ui-icon-circle-arrow-s'
+      }
+    };
+    jQuery('.accordion', this.domElement).accordion(accordionOptions);
   }
 
   protected get dataVersion(): Version {
