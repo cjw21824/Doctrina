@@ -2,7 +2,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneButton
 } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
@@ -10,7 +11,7 @@ import styles from './AssetDeploymentWebPart.module.scss';
 import * as strings from 'AssetDeploymentWebPartStrings';
 
 export interface IAssetDeploymentWebPartProps {
-  description: string;
+  description: string;  
 }
 
 export default class AssetDeploymentWebPart extends BaseClientSideWebPart<IAssetDeploymentWebPartProps> {

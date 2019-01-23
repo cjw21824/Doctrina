@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-preconfiguredentries-client-side-solution",
+    "id": "86136372-8187-4df1-87db-ee9a4c6fea38",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-preconfiguredentries.sppkg"
+  }
+}

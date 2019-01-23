@@ -4,9 +4,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-import { escape } from '@microsoft/sp-lodash-subset';
 import {SPComponentLoader} from '@microsoft/sp-loader';
-import styles from './HelloWorldWebPart.module.scss';
 import * as strings from 'HelloWorldWebPartStrings';
 import MyAccordianTemplate from './MyAccordianTemplate';
 import * as jQuery from 'jquery';
