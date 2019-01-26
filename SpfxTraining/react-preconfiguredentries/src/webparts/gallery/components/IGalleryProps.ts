@@ -1,3 +1,4 @@
-export interface IGalleryProps {
-  description: string;
+import { IGalleryWebPartProps } from '../GalleryWebPart';
+
+export interface IGalleryProps extends IGalleryWebPartProps {
 }

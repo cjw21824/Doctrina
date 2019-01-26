@@ -2,9 +2,11 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
+ BaseClientSideWebPart,
+ IPropertyPaneConfiguration,
+ PropertyPaneDropdown,
+ PropertyPaneSlider,
+ PropertyPaneChoiceGroup
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'GalleryWebPartStrings';
@@ -12,7 +14,10 @@ import Gallery from './components/Gallery';
 import { IGalleryProps } from './components/IGalleryProps';
 
 export interface IGalleryWebPartProps {
-  description: string;
+  listName: string;
+  order: string;
+  numberOfItems: number;
+  style: string;
 }
 
 export default class GalleryWebPart extends BaseClientSideWebPart<IGalleryWebPartProps> {
@@ -21,7 +26,10 @@ export default class GalleryWebPart extends BaseClientSideWebPart<IGalleryWebPar
     const element: React.ReactElement<IGalleryProps > = React.createElement(
       Gallery,
       {
-        description: this.properties.description
+        listName: this.properties.listName,
+        order: this.properties.order,
+        numberOfItems: this.properties.numberOfItems,
+        style: this.properties.style
       }
     );
 
@@ -47,8 +55,44 @@ export default class GalleryWebPart extends BaseClientSideWebPart<IGalleryWebPar
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneDropdown('listName', {
+                  label: strings.ListNameFieldLabel,
+                  options: [{
+                    key: 'Documents',
+                    text: 'Documents'
+                  },
+                  {
+                    key: 'Images',
+                    text: 'Images'
+                  }]
+                }),
+                PropertyPaneChoiceGroup('order', {
+                  label: strings.OrderFieldLabel,
+                  options: [{
+                    key: 'chronological',
+                    text: strings.OrderFieldChronologicalOptionLabel
+                  },
+                  {
+                    key: 'reversed',
+                    text: strings.OrderFieldReversedOptionLabel
+                  }]
+                }),
+                PropertyPaneSlider('numberOfItems', {
+                  label: strings.NumberOfItemsFieldLabel,
+                  min: 1,
+                  max: 10,
+                  step: 1
+                }),
+                PropertyPaneChoiceGroup('style', {
+                  label: strings.StyleFieldLabel,
+                  options: [{
+                    key: 'thumbnails',
+                    text: strings.StyleFieldThumbnailsOptionLabel
+                  },
+                  {
+                    key: 'list',
+                    text: strings.StyleFieldListOptionLabel
+                  }]
                 })
               ]
             }
