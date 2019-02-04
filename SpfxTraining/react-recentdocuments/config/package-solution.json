@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-recentdocuments-client-side-solution",
+    "id": "4d35cf0e-cd7b-4bad-858d-502172f253e6",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-recentdocuments.sppkg"
+  }
+}

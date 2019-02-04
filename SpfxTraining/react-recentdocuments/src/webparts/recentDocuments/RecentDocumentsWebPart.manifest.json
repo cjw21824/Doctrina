@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "98f62f35-a6da-43ee-921a-49a35bf6eebc",
+  "alias": "RecentDocumentsWebPart",
+  "componentType": "WebPart",
+
+  
+  "version": "*",
+  "manifestVersion": 2,
+
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+    "title": { "default": "Recent documents" },
+    "description": { "default": "Shows recently modified documents" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+     
+    }
+  }]
+}

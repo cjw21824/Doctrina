@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-listinfo-client-side-solution",
+    "id": "451a7c0c-7636-44d8-8d56-6aad15aa1bde",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-listinfo.sppkg"
+  }
+}

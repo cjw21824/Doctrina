@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.7.1",
+    "libraryName": "react-recentdocuments",
+    "libraryId": "4d35cf0e-cd7b-4bad-858d-502172f253e6",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

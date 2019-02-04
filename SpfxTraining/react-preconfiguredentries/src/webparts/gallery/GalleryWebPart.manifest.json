@@ -7,15 +7,41 @@
   "manifestVersion": 2,
   "requiresCustomScript": false,
   "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
-    "group": { "default": "Other" },
+    "groupId": "6737645a-4443-4210-a70e-e5e2a219133a",
+    "group": { "default": "Content" },
+    "title": { "default": "Recent images" },
+    "description": { "default": "Shows 5 most recent images" },
+    "officeFabricIconFontName": "Picture",
+    "properties": {
+      "listName": "Images",
+      "order": "reversed",
+      "numberOfItems": 5,
+      "style": "thumbnails"
+    }
+  },
+  {
+    "groupId": "6737645a-4443-4210-a70e-e5e2a219133a",
+    "group": { "default": "Content" },
+    "title": { "default": "Recent documents" },
+    "description": { "default": "Shows 10 most recent documents" },
+    "officeFabricIconFontName": "Documentation",
+    "properties": {
+      "listName": "Documents",
+      "order": "reversed",
+      "numberOfItems": 10,
+      "style": "list"
+    }
+  },
+  {
+    "groupId": "6737645a-4443-4210-a70e-e5e2a219133a",
+    "group": { "default": "Content" },
     "title": { "default": "Gallery" },
     "description": { "default": "Shows items from the selected list" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "CustomList",
     "properties": {
       "listName": "",
       "order": "",
-      "numberOfItems": 10,
+      "numberOfItems": 5,
       "style": ""
     }
   }]
