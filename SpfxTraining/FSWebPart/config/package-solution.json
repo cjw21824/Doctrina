@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "fs-web-part-client-side-solution",
+    "id": "f074fcda-44b6-4f85-a233-842851ba332b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/fs-web-part.sppkg"
+  }
+}
