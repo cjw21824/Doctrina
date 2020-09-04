@@ -1,25 +1,26 @@
-grid = []
-row = []
-columns = 31
-rows = 15
-for i in range(0,columns):
-    row.append('-')
-for i in range(0,rows):
-    grid.append(row)
-for i in grid:
-    print(" ".join(i))
 
+def calculateNextGen(before,me,after):
+    value = [before,me,after]
+    string = ''.join(value)
+    return ruleset[string]
+    
 
-ruleset = {'111':0,'110':0,'101':0,'100':1,'011':1,'010': 1,'001':1,'000':0}
-currentGen = [0,1,1,1,1,0]
-for i in range(0,len(currentGen)):
-    CA=[]
-    me = currentGen[i]
-    if(i > 0):
+ruleset = {'XXX':'-','XX-':'-','X-X':'-','X--':'X','-XX':'X','-X-':'X','--X':'X','---':'-'}
+currentGen = ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','X','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-']
+iterations = 15
+print(' '.join(currentGen))
+for i in range(0,iterations):
+    nextGen=[]
+    for i in range(0,len(currentGen)):
         before = currentGen[i-1]
-    else:
-        before = currentGen[i]
-        me = currentGen[i+1]
-        after = currentGen[i+2]
-    if(i < len(currentGen)-1):
-        after = currentGen[i+1]
+        me = currentGen[i]
+        try:
+            after = currentGen[i+1]
+        except:
+            after = '-'
+        nextGen.append(calculateNextGen(before,me,after))
+    currentGen = nextGen
+    print(' '.join(currentGen))
+
+
+
